@@ -45,11 +45,4 @@ php artisan migrate:fresh --seed
 npm run dev
 php artisan serve (jalankan pada terminal terpisah)
 ```
-## Bantuan dan Dukungan
 
-Jika anda memerlukan bantuan dan juga dukungan terkait penggunaan dan ketidaksesuaian sistem, anda dapat mengirim email pada [williamkurniawan1144@gmail.com](mailto:williamkurniawan1144@gmail.com).
-
-## Lisensi
-
-Aplikasi ini dibangun dengan framework laravel yang memiliki lisensi open source sebagai berikut:<br/>
-[MIT license](https://opensource.org/licenses/MIT).

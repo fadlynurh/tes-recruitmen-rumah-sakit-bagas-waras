@@ -31,37 +31,36 @@ class DashboardController extends Controller
 
   public function admin()
   {
-    $orderCount = Order::all()->count();
-    $orderDoneCount = Order::where(function ($query) {
-      $query
-        ->where('status_pembayaran', 'done');
-    })->count();
-    $layananCount = Layanan::all()->count();
-    $kendaraanCount = Kendaraan::all()->count();
+    $orderCount = Order::count();
+    $orderDoneCount = Order::where('status_pembayaran', 'done')->count();
+    $layananCount = Layanan::count();
+    $kendaraanCount = Kendaraan::count();
+    $customerCount = User::count(); // FIX WAJIB
 
-    $lastDoneOrder = Order::where(function ($query) {
-      $query
-        ->where('status_pembayaran', 'done');
-    })
-      ->orderBy('created_at', 'DESC')
-      ->limit(5)
-      ->get()->map(fn ($order) => ([
-        'id' => $order->id,
-        'nama_penumpang' => $order->nama_penumpang,
-        'id_payment' => $order->id_payment,
-        'layanan' => $order->schedule->layanan->kota_asal . " - " . $order->schedule->layanan->kota_tujuan,
-        'status_pembayaran' => $order->status_pembayaran,
-        'tanggal_pemberangkatan' => $order->tanggal_pemberangkatan
-      ]));
+    $lastDoneOrder = Order::where('status_pembayaran', 'done')
+        ->orderBy('created_at', 'DESC')
+        ->limit(5)
+        ->get()
+        ->map(fn ($order) => ([
+            'id' => $order->id,
+            'nama_penumpang' => $order->nama_penumpang,
+            'id_payment' => $order->id_payment,
+            'layanan' => $order->schedule->layanan->kota_asal . " - " . $order->schedule->layanan->kota_tujuan,
+            'status_pembayaran' => $order->status_pembayaran,
+            'tanggal_pemberangkatan' => $order->tanggal_pemberangkatan
+        ]));
 
     return Inertia::render('Admin/Dashboard', [
-      'orderCount' => $orderCount,
-      'layananCount' => $layananCount,
-      'kendaraanCount' => $kendaraanCount,
-      'lastDoneOrder' => $lastDoneOrder,
-      'orderDoneCount' => $orderDoneCount
+        'orderCount' => $orderCount,
+        'layananCount' => $layananCount,
+        'kendaraanCount' => $kendaraanCount,
+        'lastDoneOrder' => $lastDoneOrder,
+        'orderDoneCount' => $orderDoneCount,
+        'customerCount' => $customerCount, // ← DITAMBAHKAN
+        'message' => session('message')     // ← optional tapi aman
     ]);
   }
+
 
   public function client()
   {
