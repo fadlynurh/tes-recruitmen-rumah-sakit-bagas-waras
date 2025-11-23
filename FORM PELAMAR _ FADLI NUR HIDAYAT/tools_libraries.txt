@@ -1,0 +1,27 @@
+Tools dan Library yang Digunakan dalam Proyek TRVLX
+
+Berikut adalah daftar tools dan library yang digunakan dalam
+pengembangan proyek TRVLX:
+
+Backend
+
+-   Laravel (Framework utama berbasis PHP)
+-   Composer (Dependency management PHP)
+
+Frontend
+
+-   Inertia.js (React) (Menghubungkan Laravel dengan React untuk SPA)
+-   React.js (Library frontend utama)
+-   Tailwind CSS (Framework CSS utility-first)
+-   React Leaflet (Library peta berbasis Leaflet untuk React)
+-   Leaflet Routing Machine (Library untuk penentuan rute pada peta)
+
+Build Tools
+
+-   Vite (Bundler dan dev server)
+-   NPM / Node.js (Dependency frontend)
+
+Lain-lain
+
+-   Docker / docker-compose (opsional, untuk environment development)
+-   Carbon (Library date-time Laravel)
